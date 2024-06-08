@@ -1,8 +1,8 @@
 const Main = () => {
- return (
-  <main>
+  return (
+    <main>
 
-  </main>
+    </main>
  )
 }
 
