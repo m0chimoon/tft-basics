@@ -1,6 +1,6 @@
 const Set = () => {
  return (
-  <div>
+  <div className='flex flex-col m-auto max-w-2xl'>
     <h2>Sets</h2>
     <p>
       Every game of TFT takes place in the Convergence, and centers around a specific theme and story called a set.

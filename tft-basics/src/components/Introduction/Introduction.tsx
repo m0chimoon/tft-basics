@@ -1,6 +1,6 @@
 const Introduction = () => {
  return (
-  <div>
+  <div className='flex flex-col m-auto max-w-2xl'>
     <h2>What is Teamfight Tactics?</h2>
     <p>
       Teamfight Tactics is a strategic free-for-all game of attrition featuring iconic champions from League of Legends.
