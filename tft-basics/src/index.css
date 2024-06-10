@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'BeaufortforLOL';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(./fonts/BeaufortforLOL-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'BeaufortforLOL';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(./fonts/BeaufortforLOL-Medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'BeaufortforLOL';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(./fonts/BeaufortforLOL-Bold.woff2) format('woff2');
+}
+
 :root {
-  font-family: Nunito, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: BeaufortforLOL, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   min-height: 100vh;
