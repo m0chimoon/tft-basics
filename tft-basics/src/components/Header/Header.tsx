@@ -4,7 +4,7 @@ import tfttextlogo from '../../assets/tftbasicstextlogo.png'
 
 const Header = () => {
   return (
-    <header className='flex w-[1280px] items-center py-1 uppercase text-lg font-semibold text-[#ebc777]'>
+    <header className='flex w-[1280px] items-center mb-12 py-1 uppercase text-lg font-semibold text-[#ebc777]'>
       <img className='max-w-[96px] max-h-[96px] mr-1.5' src={tfttextlogo}/>
       <img className='max-w-[96px] max-h-[96px]' src={tftlogo}/>
       <ul className='flex gap-10 px-6'>
