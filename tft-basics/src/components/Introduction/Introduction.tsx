@@ -1,14 +1,16 @@
+
+
 const Introduction = () => {
  return (
   <div className='flex flex-col m-auto max-w-2xl'>
-    <h2>What is Teamfight Tactics?</h2>
-    <p>
+    <h2 className='text-4xl font-bold uppercase mb-5'>What is Teamfight Tactics?</h2>
+    <p className="text-lg text-justify">
       Teamfight Tactics is a strategic free-for-all game of attrition featuring iconic champions from League of Legends.
       Your goal? Grow your team and protect your board to become the last player standing. Here you'll find the basic information
       you need to get started:
     </p>
-    <h3>Gameplay</h3>
-    <p>
+    <h3 className="text-2xl font-bold uppercase my-5">Gameplay</h3>
+    <p className="text-lg text-justify">
     Teamfight Tactics is an autobattler: a round-based PvP game where you’ll draft a team that battles automatically on your behalf.
     If you've never played an autobattler before, don't worry! TFT borrows from many of the concepts you know and love about other strategy games,
     like drafting from a shared pool of resources, team building, economy management, and positioning.
