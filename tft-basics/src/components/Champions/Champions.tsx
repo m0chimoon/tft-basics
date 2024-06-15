@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Champions = () => {
-    //const champions: Champion[] = getSet11Champions();
-
     const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
     const [filter, setFilter] = useState<string>("");
     const [costFilter, setCostFilter] = useState<boolean>(false);
@@ -40,18 +38,18 @@ const Champions = () => {
     return (
         <>
             <h2 className="text-4xl">Champions</h2>
-            <label className="mr-2">Filter</label>
-            <input onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} type="text" placeholder="Search.." />
-            <div className="flex flex-row justify-center gap-4 m-2">
-                <button onClick={filterByCost} className="p-1 bg-indigo-800 rounded-sm">Cost</button>
-                <button onClick={filterAlphabetically} className="p-1 bg-indigo-800 rounded-sm">Name</button>
-                <button onClick={resetFilters} className="p-1 bg-indigo-800 rounded-sm">Reset</button>
+            <div className="flex flex-row justify-center gap-4 m-2 place-items-center">
+                <label>Filters</label>
+                <input onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="pl-2 bg-white text-black rounded" type="text" placeholder="Search.." />
+                <button onClick={filterByCost} className="p-1 bg-indigo-800 rounded-lg">Cost</button>
+                <button onClick={filterAlphabetically} className="p-1 bg-indigo-800 rounded-lg">Name</button>
+                <button onClick={resetFilters} className="p-1 bg-indigo-800 rounded-lg">Reset</button>
             </div>
             <div className="flex justify-center">
                 <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2">
                 {filteredChampions && filteredChampions.map(champ => (
                     <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-18 w-18">
-                        <img className="h-14 w-14 rounded-full" src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
+                        <img className={`h-14 w-14 rounded-full border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
                         <p>{champ.name}</p>
                     </Link>
                 ))}
@@ -62,6 +60,7 @@ const Champions = () => {
     )
 }
 export default Champions
+
 
 export interface Champion {
     name: string
@@ -109,75 +108,22 @@ export enum Cost {
     Five = 5
 }
 
+const costToColorMap: Record<Cost, string> = {
+    [Cost.Summon]: "border-amber-600",
+    [Cost.One]: "border-gray-400",
+    [Cost.Two]: "border-green-800",
+    [Cost.Three]: "border-blue-500",
+    [Cost.Four]: "border-purple-500",
+    [Cost.Five]: "border-yellow-400"
+};
+    
+const setChampColor = (cost: Cost): string => {
+    return costToColorMap[cost];
+};
+
 interface Abillity {
     name: string
     description: string
-}
-
-const getSet11ChampionsName = () : string[] => {
-    return [
-        "Aatrox",
-        "Ahri",
-        "Alune",
-        "Amumu",
-        "Annie",
-        "Aphelios",
-        "Ashe",
-        "Azir",
-        "Bard",
-        "Caitlyn",
-        "Chogath",
-        "Darius",
-        "Diana",
-        "Galio",
-        "Garen",
-        "Gnar",
-        "Hwei",
-        "Illaoi",
-        "Irelia",
-        "Janna",
-        "Jax",
-        "Kaisa",
-        "Kayle",
-        "Kayn",
-        "Khazix",
-        "Kindred",
-        "Kobuko",
-        "KogMaw",
-        "LeeSin",
-        "Lillia",
-        "Lissandra",
-        "Lux",
-        "Malphite",
-        "Morgana",
-        "Nautilus",
-        "Neeko",
-        "Ornn",
-        "Qiyana",
-        "Rakan",
-        "RekSai",
-        "Riven",
-        "Senna",
-        "Sett",
-        "Shen",
-        "Sivir",
-        "Soraka",
-        "Sylas",
-        "Syndra",
-        "TahmKench",
-        "Teemo",
-        "Thresh",
-        "Tristana",
-        "Udyr",
-        "Volibear",
-        "Wukong",
-        "Xayah",
-        "Yasuo",
-        "Yone",
-        "Yorick",
-        "Zoe",
-        "Zyra"
-    ]
 }
 
 // fated, annie, alune etc... description no goood
