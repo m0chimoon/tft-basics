@@ -33,6 +33,10 @@
   min-height: 100vh;
   margin: 0;
   text-align: center;
+  background-image: url('../src/assets/tftbackground.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
