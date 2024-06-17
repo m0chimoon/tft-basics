@@ -26,6 +26,9 @@ const Header = () => {
         <li className='hover:underline'>
           <Link to='/items'>items</Link>
         </li>
+        <li className='hover:underline'>
+          <Link to='/champions'>Champions</Link>
+        </li>
       </ul>
     </header>
   )

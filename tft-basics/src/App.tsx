@@ -7,6 +7,8 @@ import Set from './components/Set/Set'
 import Comps from './components/Comps/Comps'
 import Augments from './components/Augments/Augments'
 import Items from './components/Items/Items'
+import Champions from './components/Champions/Champions'
+import ChampionView from './components/ChampionView/ChampionView'
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
         <Route path='/comps' element={<Comps />} />
         <Route path='/augments' element={<Augments />} />
         <Route path='/items' element={<Items />} />
+        <Route path='/champions' element={<Champions />} />
+        <Route path='/champions/:name' element={ <ChampionView />}/>
       </Routes>
       <Footer />
     </BrowserRouter>
