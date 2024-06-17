@@ -28,11 +28,7 @@ const Champions = () => {
     }
     
     useEffect(() => {
-        if (filter === "") {
-            setFilteredChampions(champions);
-        } else {
-            setFilteredChampions((fc) => fc.filter((champ) => champ.name.toLocaleLowerCase().includes(filter)))
-        }
+        setFilteredChampions(champions.filter((champ) => champ.name.toLocaleLowerCase().includes(filter)))
     },[filter])
 
     return (
@@ -48,7 +44,7 @@ const Champions = () => {
             <div className="flex justify-center">
                 <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2">
                 {filteredChampions && filteredChampions.map(champ => (
-                    <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-18 w-18">
+                    <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">
                         <img className={`h-14 w-14 rounded-full border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
                         <p>{champ.name}</p>
                     </Link>
