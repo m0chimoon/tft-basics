@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import tftlogo from '../../assets/tftbasics.png'
-import tfttextlogo from '../../assets/tftbasicstextlogo.png'
+import tftlogo from '../../assets/tftbasicslogo.png'
+import tfttextlogo from '../../assets/tftbasicslogotext.png'
 
 const Header = () => {
   return (
-    <header className='flex w-[1280px] items-center mb-12 py-1 uppercase text-lg font-semibold text-[#ebc777]'>
+    <header className='flex w-[1280px] items-center mb-12 py-1 uppercase text-lg font-semibold text-[#f6b03f]'>
        <Link to='/'>
         <img className='max-w-[96px] max-h-[96px] mr-1.5' src={tfttextlogo}/>
        </Link>
