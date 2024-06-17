@@ -14,10 +14,10 @@ const Champions = () => {
     const filterByCost = (): void => {
         let sorted;
         if (!costFilter) {
-            sorted = [...filteredChampions].sort((a, b) => a.cost - b.cost);
+            sorted = [...filteredChampions].sort((a, b) => b.cost - a.cost);
             setCostFilter(true);
         } else {
-            sorted = [...filteredChampions].sort((a, b) => b.cost - a.cost);
+            sorted = [...filteredChampions].sort((a, b) => a.cost - b.cost);
             setCostFilter(false);
         }
         setFilteredChampions(sorted);
