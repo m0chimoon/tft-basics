@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Traits from "../Traits/Traits";
 
 const Champions = () => {
     const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
@@ -63,10 +64,10 @@ export interface Champion {
     name: string
     cost: Cost,
     ability: Abillity
-    traits: Trait[]
+    traits: TraitName[]
 }
 
-type Trait =
+export type TraitName =
     | "Heavenly"
     | "Fated"
     | "Ghostly"
@@ -128,36 +129,6 @@ export const getSet11Champions = (name: string) => {
     const champion: Champion | undefined = champions.find((champion) => champion.name === name);
     return champion ? champion : champions[0];
 }
-
-const traits: Trait[] = [
-    "Heavenly",
-    "Fated",
-    "Ghostly",
-    "Behemoth",
-    "Bruiser",
-    "Reaper",
-    "Mythic",
-    "Inkshadow",
-    "Altruist",
-    "Arcanist",
-    "Warden",
-    "Lovers",
-    "Artist",
-    "Great",
-    "Sniper",
-    "Porcelain",
-    "Invoker",
-    "Trickshot",
-    "Fortune",
-    "Duelist",
-    "Storyweaver",
-    "Dryad",
-    "Umbral",
-    "Sage",
-    "Dragonlord",
-    "Exalted",
-    "SpiritWalker"
-];
 
 const champions: Champion[] = [
     {name: "Aatrox", cost: Cost.Two, traits: ["Ghostly", "Inkshadow", "Bruiser"], ability: {name: "Phantom Blade", description: "20% Shred the current target for 4 seconds and deal magic damage to them. Heal yourself."}},

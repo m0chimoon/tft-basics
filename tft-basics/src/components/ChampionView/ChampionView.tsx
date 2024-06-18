@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Champion, Cost, getSet11Champions } from '../Champions/Champions';
+import Traits from '../Traits/Traits';
 
 const ChampionView = () => {
     const { name } = useParams();
@@ -24,7 +25,7 @@ const ChampionView = () => {
                     <p>Cost: {champion.cost}</p>
                     <p>Traits</p>
                     {champion.traits.map(trait => (
-                        <p key={trait}>{trait}</p>
+                        <Traits key={trait} trait={trait}></Traits>
                     ))}
                 </div>
             </div>
