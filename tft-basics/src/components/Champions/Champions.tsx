@@ -24,6 +24,7 @@ const Champions = () => {
     }
 
     const resetFilters = () => {
+        setFilter("");
         setFilteredChampions(champions);
     }
     
@@ -33,13 +34,13 @@ const Champions = () => {
 
     return (
         <>
-            <h2 className="text-4xl">Champions</h2>
+            <h2 className="text-4xl font-bold uppercase my-5 text-[#f6b03f]">Champions</h2>
             <div className="flex flex-row justify-center gap-4 m-2 place-items-center">
                 <label>Filters</label>
-                <input onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="pl-2 bg-white text-black rounded" type="text" placeholder="Search.." />
-                <button onClick={filterByCost} className="p-1 bg-indigo-800 rounded-lg">Cost</button>
-                <button onClick={filterAlphabetically} className="p-1 bg-indigo-800 rounded-lg">Name</button>
-                <button onClick={resetFilters} className="p-1 bg-indigo-800 rounded-lg">Reset</button>
+                <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded" type="text" placeholder="Search.." />
+                <button onClick={filterByCost} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Cost</button>
+                <button onClick={filterAlphabetically} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Name</button>
+                <button onClick={resetFilters} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Reset</button>
             </div>
             <div className="flex justify-center">
                 <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2">
