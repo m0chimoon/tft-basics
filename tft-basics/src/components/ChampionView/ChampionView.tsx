@@ -7,18 +7,29 @@ const ChampionView = () => {
     const championColor = setChampColor(champion.cost);
 
     return (
-        <>
-            <h2 className='text-4xl'>{name}</h2>
-            <p>Abillity</p>
-            <p>{champion.abillity.name}</p>
-            <p>{champion.abillity.description}</p>
-            <img className={`border ${championColor}`} src={`/src/assets/champions/${name}.png`} />
-            <p>Cost: {champion.cost}</p>
-            <p>Traits</p>
-            {champion.traits.map(trait => (
-                <p key={trait}>{trait}</p>
-            ))}
-        </>
+        <div className='flex flex-col gap-y-10'>
+
+            <div className='flex justify-center place-items-center gap-x-40'>
+                <img className={`border ${championColor}`} src={`/src/assets/champions/${name}.png`} />
+                <h2 className='text-4xl font-bold mb-5 text-[#f6b03f]'>{name}</h2>
+            </div>
+            
+            <div className='flex justify-center gap-x-2'>
+                <div className="bg-gray-600 p-4 rounded shadow-lg">
+                    <h3 className="text-2xl font-bold text-[#f6b03f]">Ability</h3>
+                    <p className="text-xl">{champion.ability.name}</p>
+                    <p>{champion.ability.description}</p>
+                </div>
+                <div className="bg-gray-600 p-4 rounded shadow-lg">
+                    <p>Cost: {champion.cost}</p>
+                    <p>Traits</p>
+                    {champion.traits.map(trait => (
+                        <p key={trait}>{trait}</p>
+                    ))}
+                </div>
+            </div>
+
+        </div>
     )
 }
 export default ChampionView
