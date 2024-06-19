@@ -5,11 +5,18 @@ const Items = () => {
   const items: Item[] = getItemInfo();
 
   // filter items by components
-  const [filteredItems, setFilteredItems] = useState(items);
+  const [filteredItems, setFilteredItems] = useState(items)
+  const [recipe, setRecipe] = useState<Component[]>([])
   
   const filterItems = (componentName: Component) => {
     const filter = componentName
     setFilteredItems(items.filter((item) => item.components.includes(filter)))
+    setRecipe([])
+  }
+
+  const showRecipe = (itemName: string) => {
+    items.filter((item) => item.name === itemName ? setRecipe(item.components) : "")
+    console.log(recipe)
   }
 
   const resetFilter = (): void => {
@@ -27,15 +34,21 @@ const Items = () => {
         ))}
       </div>
 
-    <div className="flex flex-wrap place-content-start">
-      <p className="w-14 cursor-pointer" onClick={resetFilter}>All</p>
-      {filteredItems.map(item => (
-        <div key={item.name}>
-          <img className=" h-12 w-12" src={`/src/assets/items/${item.name.split(" ").join("")}.png`}/>
-        </div>
-      ))}
+      <div className="flex flex-wrap place-content-start">
+        <p className="w-14 cursor-pointer" onClick={resetFilter}>All</p>
+        {filteredItems.map(item => (
+          <div key={item.name} onClick={() => showRecipe(item.name)}>
+            <img className=" h-12 w-12" src={`/src/assets/items/${item.name.split(" ").join("")}.png`}/>
+            <p>{item.description}</p>
+          </div>
+        ))}
+        {recipe.map((r, index ) => (
+          <img key={index} src={`/src/assets/items/${r.split(" ").join("")}.png`} />
+        ))}
+      </div>
+
+
     </div>
-  </div>
  )
 }
 
@@ -50,7 +63,8 @@ type Component =
   "Recurve Bow" |
   "Sparring Gloves" |
   "Spatula" |
-  "Tear of the Goddess";
+  "Tear of the Goddess" |
+  "none";
 
 type ItemName = 
   "Dryad Emblem" |
