@@ -12,14 +12,16 @@ const Traits =  (props: IProps) => {
     
 
     return (
-        <div className="shadow-lg my-6 bg-gray-700 rounded py-4 px-2">
-            <Tooltip content="Hello" >
-                <img src={`/src/assets/traits/${trait.name}.png`}/>
-            </Tooltip>
-            <h2>{trait.name}</h2>
-            <h2>{trait.description}</h2>
+        <div className="shadow-lg my-6 bg-gray-700 rounded py-4 text-left px-10">
+            <div className="flex gap-3 place-items-center">
+                <Tooltip content="Hello" >
+                    <img className="h-8 w-8" src={`/src/assets/traits/${trait.name}.png`}/>
+                </Tooltip>
+                <h2 className="text-xl">{trait.name}</h2>
+            </div>
+            <p className="m-1">{trait.description}</p>
             {trait.steps.map((step, index) => (
-                <p key={index}>{step.amount}: {step.description}</p>
+                <p className="m-1" key={index}>{step.amount}: {step.description}</p>
             ))}
         </div>
     )
