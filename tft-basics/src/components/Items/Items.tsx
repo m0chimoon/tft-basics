@@ -5,11 +5,18 @@ const Items = () => {
   const items: Item[] = getItemInfo();
 
   // filter items by components
-  const [filteredItems, setFilteredItems] = useState(items);
+  const [filteredItems, setFilteredItems] = useState(items)
+  const [recipe, setRecipe] = useState<Component[]>([])
   
   const filterItems = (componentName: Component) => {
     const filter = componentName
     setFilteredItems(items.filter((item) => item.components.includes(filter)))
+    setRecipe([])
+  }
+
+  const showRecipe = (itemName: string) => {
+    items.filter((item) => item.name === itemName ? setRecipe(item.components) : "")
+    console.log(recipe)
   }
 
   const resetFilter = (): void => {
@@ -17,25 +24,37 @@ const Items = () => {
   }
     
   return (
-    <div className="flex flex-row gap-10">
-      <div className="flex flex-col justify-center gap-2">
-        <h3 className="text-2xl mb-2">Components</h3>
-        {components.map(component => (
-          <div key={component} onClick={() => filterItems(component)}>
-            <img className="cursor-pointer hover:opacity-70" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
+    <div className="flex flex-col">
+      <ul className="flex flex-col">
+        <li className="flex flex-col">
+          <h3 className="text-2xl uppercase text-[#f6b03f] font-semibold mb-7">Components</h3>
+          <div className="flex gap-3 justify-center mb-7">
+            {components.map(component => (
+              <img key={component} onClick={() => filterItems(component)} className="cursor-pointer hover:opacity-70 rounded-lg" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
+            ))}
           </div>
-        ))}
-      </div>
-
-    <div className="flex flex-wrap place-content-start">
-      <p className="w-14 cursor-pointer" onClick={resetFilter}>All</p>
-      {filteredItems.map(item => (
-        <div key={item.name}>
-          <img className=" h-12 w-12" src={`/src/assets/items/${item.name.split(" ").join("")}.png`}/>
-        </div>
-      ))}
+        </li>
+        <li className="flex flex-col">
+          <h3 className="text-2xl uppercase text-[#f6b03f] font-semibold mb-7">Items</h3>
+          <p className="w-14 cursor-pointer uppercase text-[#f6b03f] font-semibold" onClick={resetFilter}>All</p>
+          <div className="flex gap-3 flex-wrap justify-center">
+            {filteredItems.map(item => (
+              <div className="flex max-w-[200px]">
+                <img key={item.name} onClick={() => showRecipe(item.name)} className=" h-12 w-12 rounded-lg" src={`/src/assets/items/${item.name.split(" ").join("")}.png`} />
+              </div>
+            ))}
+            {recipe.map((element, index ) => (
+            <img key={index} src={`/src/assets/items/${element.split(" ").join("")}.png`} />
+            ))}
+          </div>
+        </li>
+        <li>
+          {recipe.map((element, index ) => (
+            <img key={index} src={`/src/assets/items/${element.split(" ").join("")}.png`} />
+          ))}
+        </li>
+      </ul>
     </div>
-  </div>
  )
 }
 
@@ -50,7 +69,8 @@ type Component =
   "Recurve Bow" |
   "Sparring Gloves" |
   "Spatula" |
-  "Tear of the Goddess";
+  "Tear of the Goddess" |
+  "none";
 
 type ItemName = 
   "Dryad Emblem" |
