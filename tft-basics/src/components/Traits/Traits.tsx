@@ -12,11 +12,9 @@ const Traits =  (props: IProps) => {
     
 
     return (
-        <div className="shadow-lg my-6 bg-gray-700 rounded py-4 text-left px-10">
+        <div className="shadow-lg my-6 bg-gray-600 rounded py-4 text-left px-10">
             <div className="flex gap-3 place-items-center">
-                <Tooltip content="Hello" >
-                    <img className="h-8 w-8" src={`/src/assets/traits/${trait.name}.png`}/>
-                </Tooltip>
+                <img className="h-8 w-8" src={`/src/assets/traits/${trait.name}.png`}/>
                 <h2 className="text-xl">{trait.name}</h2>
             </div>
             <p className="m-1">{trait.description}</p>
@@ -27,45 +25,6 @@ const Traits =  (props: IProps) => {
     )
 }
 export default Traits
-
-
-interface IToolTipProps {
-    children: string | JSX.Element | JSX.Element[] 
-    content: string
-}
-const Tooltip = (props: IToolTipProps) => {
-    let timeout: any;
-    const [active, setActive] = useState(false);
-  
-    const showTip = () => {
-      timeout = setTimeout(() => {
-        setActive(true);
-      }, 200);
-    };
-  
-    const hideTip = () => {
-      clearInterval(timeout);
-      setActive(false);
-    };
-
-    return( 
-        <div
-            className=" inline-block relative"
-            // When to show the tooltip
-            onMouseEnter={showTip}
-            onMouseLeave={hideTip}
-            >
-            {props.children}
-            {active && (
-                <div className={`absolute rounded left-1/2 -translate-x-1/2 p-1.5 text-amber-400 bg-indigo-800 text-xl z-10 whitespace-nowrap mt-2`}>
-                {/* Content */}
-                {props.content}
-            </div>
-            )}
-        </div>
-    )
-}
-
 
 const getTraitByName = (name: string): Trait => {
     const trait : Trait | undefined = traits.find(trait => trait.name == name);
