@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Traits from "../Traits/Traits";
 
 const Champions = () => {
     const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
@@ -39,17 +38,19 @@ const Champions = () => {
             <div className="flex flex-row justify-center gap-4 m-2 place-items-center">
                 <label>Filters</label>
                 <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded" type="text" placeholder="Search.." />
-                <button onClick={filterByCost} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Cost</button>
-                <button onClick={filterAlphabetically} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Name</button>
-                <button onClick={resetFilters} className="px-2 py-1 bg-amber-400 rounded-lg text-black">Reset</button>
+                <button onClick={filterByCost} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Cost</button>
+                <button onClick={filterAlphabetically} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Name</button>
+                <button onClick={resetFilters} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Reset</button>
             </div>
             <div className="flex justify-center">
                 <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2">
                 {filteredChampions && filteredChampions.map(champ => (
-                    <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">
-                        <img className={`h-14 w-14 rounded-full border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
-                        <p>{champ.name}</p>
-                    </Link>
+                    <ChampionTooltip champion={champ}>
+                        <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">
+                            <img className={`h-14 w-14 rounded-full border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
+                            <p>{champ.name}</p>
+                        </Link>
+                    </ChampionTooltip>
                 ))}
                 {filteredChampions.length === 0  ? <p>No results...</p> : <></>}
                 </div>
@@ -58,6 +59,61 @@ const Champions = () => {
     )
 }
 export default Champions
+
+
+interface IToolTipProps {
+    children: string | JSX.Element | JSX.Element[] 
+    champion: Champion
+}
+const ChampionTooltip = (props: IToolTipProps) => {
+    let timeout: any;
+    const champion = props.champion;
+    const [active, setActive] = useState(false);
+  
+    const showTip = () => {
+      timeout = setTimeout(() => {
+        setActive(true);
+      }, 200);
+    };
+  
+    const hideTip = () => {
+      clearInterval(timeout);
+      setActive(false);
+    };
+
+    return( 
+        <div className="inline-block relative" onMouseEnter={showTip} onMouseLeave={hideTip}>
+            {props.children}
+            {active && (
+                <div className={`absolute rounded left-1/2 -translate-x-1/2 p-2 text-amber-400 bg-indigo-800 text-xl z-10 whitespace-nowrap mt-2 flex`}>
+                    <div>
+                        <p>{champion.name}</p>
+                        {champion.cost === Cost.Summon ? (
+                            <p>{Cost[champion.cost]}</p>
+                        ): (
+                            <p>{champion.cost} gold</p>
+                        )}
+                    </div>
+                    {champion.traits.length !== 0 && (
+                    <>
+                        <div className=" border-l mx-2"/>
+                        <div>
+                        {champion.traits.map(trait => (
+                            <div className="flex place-items-center pr-4">
+                                <img className="h-4 w-4 mr-1" src={`/src/assets/traits/${trait}.png`}/>
+                                <p>{trait}</p>
+                            </div>
+                            ))}
+                        </div>
+                    </>
+                    )}
+
+                </div>
+            )}
+        </div>
+    )
+}
+
 
 
 export interface Champion {
