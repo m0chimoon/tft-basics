@@ -22,7 +22,7 @@ const ChampionView = () => {
                 </div>
                 <div className="bg-gray-600 p-4 rounded shadow-lg">
                     <p>Cost: {champion.cost}</p>
-                    <p>Traits</p>
+                    <p>Traits:</p>
                     {champion.traits.map(trait => (
                         <p key={trait}>{trait}</p>
                     ))}
