@@ -16,6 +16,9 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
   const removedTraits = [...traits];
 
   const addChampToHex = (champ: Champion): void => {
+    if (champion) {
+      removeChampFromHex();
+    }
 
     if (champNames.every(name => name !== champ.name)) {
       setTraits((traits) => [...traits, ...champ.traits]);
