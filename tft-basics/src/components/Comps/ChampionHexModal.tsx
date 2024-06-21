@@ -12,12 +12,15 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
   if (!show) {
     return null;
   }
-
-  const { traits, setTraits } = useTraits();
-  const newTraits = [...traits];
+  const { traits, setTraits, champNames, setChampNames } = useTraits();
+  const removedTraits = [...traits];
 
   const addChampToHex = (champ: Champion): void => {
-    setTraits((traits) => [...traits, ...champ.traits]);
+
+    if (champNames.every(name => name !== champ.name)) {
+      setTraits((traits) => [...traits, ...champ.traits]);
+    } 
+    setChampNames(names => [...names, champ.name])
     setChampion(champ);
     onClose();
   }
@@ -25,14 +28,19 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
   const removeChampFromHex = (): void => {
     if (champion) {
 
-      champion.traits.forEach(trait => {
-        const index = newTraits.indexOf(trait);
-        if (index > -1) {
-          newTraits.splice(index, 1);
-        }
-      });
+      const nameIndex = champNames.indexOf(champion.name);
+      const removedName = champNames;
+      removedName.splice(nameIndex, 1)
+      setChampNames(removedName);
 
-      setTraits(newTraits);
+      if (!removedName.some(name => name === champion.name)) {
+        champion.traits.forEach(trait => {
+          const index = removedTraits.indexOf(trait);
+          removedTraits.splice(index, 1);
+        });
+        setTraits(removedTraits);
+      }
+
       setChampion(undefined);
     }
     onClose();
