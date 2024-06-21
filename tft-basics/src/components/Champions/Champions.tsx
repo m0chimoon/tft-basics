@@ -186,7 +186,7 @@ export const getSet11Champions = (name: string) => {
     return champion ? champion : champions[0];
 }
 
-const champions: Champion[] = [
+export const champions: Champion[] = [
     {name: "Aatrox", cost: Cost.Two, traits: ["Ghostly", "Inkshadow", "Bruiser"], ability: {name: "Phantom Blade", description: "20% Shred the current target for 4 seconds and deal magic damage to them. Heal yourself."}},
     {name: "Ahri", cost: Cost.One, traits: ["Fated", "Arcanist"], ability: {name: "Love Bomb", description: "Deal magic damage to the current target and magic damage to adjacent enemies."}},
     {name: "Alune", cost: Cost.Three, traits: ["Umbral", "Invoker"], ability: {name: "Lunar Barrage", description: "Rain meteors through the row with the most total enemy Health. Meteors deal magic damage split between all enemies hit. Deal magic damage to the current target. All enemies hit are 20% Shredded for 6 seconds."}},
