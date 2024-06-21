@@ -8,13 +8,16 @@ export const TraitsContext = createContext<TraitContextProps | undefined>(undefi
 export interface TraitContextProps {
     traits: TraitName[];
     setTraits: React.Dispatch<React.SetStateAction<TraitName[]>>;
+    champNames: string[]
+    setChampNames: React.Dispatch<React.SetStateAction<string[]>>
   }
   
   export const TraitsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const [traits, setTraits] = useState<TraitName[]>([]);
+    const [champNames, setChampNames] = useState<string[]>([]);
   
     return (
-      <TraitsContext.Provider value={{ traits, setTraits }}>
+      <TraitsContext.Provider value={{ traits, setTraits, champNames, setChampNames }}>
         {children}
       </TraitsContext.Provider>
     )
