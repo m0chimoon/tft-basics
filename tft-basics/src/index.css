@@ -26,6 +26,14 @@
   src: url(./fonts/BeaufortforLOL-Bold.woff2) format('woff2');
 }
 
+@layer utilities {
+  .hexagon {
+    clip-path: polygon(-50% 50%,50% 100%,150% 50%,50% 0%);
+    aspect-ratio: cos(30deg);
+    overflow: hidden;
+  }
+}
+
 :root {
   font-family: BeaufortforLOL, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
