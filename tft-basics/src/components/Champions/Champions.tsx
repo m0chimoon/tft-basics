@@ -171,7 +171,7 @@ const costToColorMap: Record<Cost, string> = {
     [Cost.Five]: "border-yellow-400"
 };
     
-const setChampColor = (cost: Cost): string => {
+export const setChampColor = (cost: Cost): string => {
     return costToColorMap[cost];
 };
 
