@@ -1,4 +1,5 @@
-import { Champion, champions } from "../Champions/Champions";
+import { useEffect, useState } from "react";
+import { Champion, champions, setChampColor } from "../Champions/Champions";
 import { useTraits } from "./TraitsContext";
 
 interface ModalProps {
@@ -12,6 +13,9 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
   if (!show) {
     return null;
   }
+
+  const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
+  const [filter, setFilter] = useState<string>("");
   const { traits, setTraits, champNames, setChampNames } = useTraits();
   const removedTraits = [...traits];
 
@@ -49,21 +53,29 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
     onClose();
   }
 
+  useEffect(() => {
+    setFilteredChampions(champions.filter((champ) => champ.name.toLocaleLowerCase().includes(filter)))
+  },[filter])
+
+
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-8 rounded shadow-md">
-        <button onClick={onClose} className="absolute top-0 right-0 m-4">
-          &times;
-        </button>
-        <div className="grid grid-cols-8 place-items-center">
-          <div onClick={removeChampFromHex} className="text-black text-justify">
+      <div className="bg-gray-200 p-8 rounded shadow-md w-[680px] h-[720px]">
+        <div className="flex justify-between place-items-center mb-2 mx-5">
+          <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-gray-700 text-white rounded w-4/12" type="text" placeholder="Search.." />
+          <button onClick={onClose} className="text-black text-xl font-bold text-end">
+            &times;
+          </button>
+        </div>
+        <div className="grid grid-cols-8 grid-rows-8 place-items-center">
+          <div onClick={removeChampFromHex} className="text-black grid place-items-center cursor-pointer hover:opacity-70">
             <div className="hexagon w-12 bg-gray-600"></div>
             <p className="text-black text-start">Empty</p>
           </div>
-          {champions.map(champ => (
-            <div key={champ.name} onClick={() => addChampToHex(champ)}>
-              <img className=" h-12 w-12" src={`/src/assets/champions/${champ.name}.png`} />
-              <p className="text-black text-start">{champ.name}</p>
+          {filteredChampions.map(champ => (
+            <div className="grid place-items-center cursor-pointer hover:opacity-70" key={champ.name} onClick={() => addChampToHex(champ)}>
+              <img className={`h-12 w-12 border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} />
+              <p className="text-black">{champ.name}</p>
             </div>
           ))}
         </div>
