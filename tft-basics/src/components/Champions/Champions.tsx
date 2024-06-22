@@ -85,19 +85,13 @@ const ChampionTooltip = (props: IToolTipProps) => {
         <div className="inline-block relative" onMouseEnter={showTip} onMouseLeave={hideTip}>
             {props.children}
             {active && (
-                <div className={`absolute rounded left-1/2 -translate-x-1/2 p-2 text-amber-400 bg-indigo-800 text-xl z-10 whitespace-nowrap mt-2 flex`}>
-                    <div>
-                        <p>{champion.name}</p>
-                        {champion.cost === Cost.Summon ? (
-                            <p>{Cost[champion.cost]}</p>
-                        ): (
-                            <p>{champion.cost} gold</p>
-                        )}
-                    </div>
+                <div className={`absolute rounded left-1/2 -translate-x-1/2 text-white bg-indigo-800 text-xl z-10 whitespace-nowrap mt-2 flex flex-col w-32`}>
+                    <img className={`w-32 h-32 rounded border-2 ${setChampColor(champion.cost)}`} src={`/src/assets/champions/${champion.name}.png`} />
+                    <div className="p-2 text-base">
                     {champion.traits.length !== 0 && (
                     <>
-                        <div className=" border-l mx-2"/>
-                        <div>
+                        {/* <div className="border-l mx-2"/> */}
+                        <div className="">
                         {champion.traits.map(trait => (
                             <div className="flex place-items-center pr-4">
                                 <img className="h-4 w-4 mr-1" src={`/src/assets/traits/${trait}.png`}/>
@@ -107,6 +101,18 @@ const ChampionTooltip = (props: IToolTipProps) => {
                         </div>
                     </>
                     )}
+                    <div className="flex gap-1">
+                        <p>{champion.name}</p>
+                        {champion.cost === Cost.Summon ? (
+                            <p>{Cost[champion.cost]}</p>
+                        ): (
+                            <>
+                                <p>{champion.cost}</p>
+                                <img className="" src="/src/assets/coin.svg"/>
+                            </>
+                        )}
+                    </div>
+                    </div>
 
                 </div>
             )}
@@ -165,7 +171,7 @@ export enum Cost {
 const costToColorMap: Record<Cost, string> = {
     [Cost.Summon]: "border-amber-600",
     [Cost.One]: "border-gray-400",
-    [Cost.Two]: "border-green-800",
+    [Cost.Two]: "border-green-600",
     [Cost.Three]: "border-blue-500",
     [Cost.Four]: "border-purple-500",
     [Cost.Five]: "border-yellow-400"
