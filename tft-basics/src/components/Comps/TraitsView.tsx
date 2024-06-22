@@ -20,7 +20,10 @@ const TraitsView = () => {
         activeTraits
           .sort((a, b) => b.count - a.count)
           .map((trait, index) => (
-            <p className="text-4xl" key={index}>{trait.traitName}: {trait.count}</p>
+            <div className="flex place-items-center gap-2">
+              <img className="h-8 w-8" src={`/src/assets/traits/${trait.traitName}.png`}/>
+              <p className="text-4xl" key={index}>{trait.traitName}: {trait.count}</p>
+            </div>
           ))
       ) : (
         <p className="text-4xl">Traits</p>
