@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Champion, Cost, setChampColor } from "../Champions/Champions";
 import ChampionHexModal from "./ChampionHexModal";
+import ChampionTooltip from "../Champions/ChampionTooltip";
 
 const ChampionHex = () => {
   const [showModal, setShowModal] = useState(false);
@@ -16,11 +17,15 @@ const ChampionHex = () => {
 
   return (
     <>
-      <button className={`hexagon ${champion ? setChampBackgroundColor(champion.cost) : "bg-gray-600"} w-20 flex place-items-center justify-center`} onClick={handleOpenModal}>
-        {champion && (
-          <img className="w-[74px] h-[80px] hexagon grid" src={`/src/assets/champions/${champion.name}.png`} alt={champion.name} />
-        )}
-      </button>
+      {champion ? (
+        <ChampionTooltip champion={champion}>
+          <button className={`hexagon ${setChampBackgroundColor(champion.cost)} w-20 flex place-items-center justify-center`} onClick={handleOpenModal}>
+            <img className="w-[74px] h-[80px] hexagon grid" src={`/src/assets/champions/${champion.name}.png`} alt={champion.name} />
+          </button>
+        </ChampionTooltip>
+      ) : (
+        <button className={`hexagon bg-gray-600 w-20 flex place-items-center justify-center`} onClick={handleOpenModal}></button>
+      )}
       <ChampionHexModal champion={champion} show={showModal} onClose={handleCloseModal} setChampion={setChampion} />
     </>
   )

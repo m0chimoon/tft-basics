@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ChampionTooltip  from "./ChampionTooltip";
 
 const Champions = () => {
     const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
@@ -61,61 +62,6 @@ const Champions = () => {
 export default Champions
 
 
-interface IToolTipProps {
-    children: string | JSX.Element | JSX.Element[] 
-    champion: Champion
-}
-const ChampionTooltip = (props: IToolTipProps) => {
-    let timeout: any;
-    const champion = props.champion;
-    const [active, setActive] = useState(false);
-  
-    const showTip = () => {
-      timeout = setTimeout(() => {
-        setActive(true);
-      }, 200);
-    };
-  
-    const hideTip = () => {
-      clearInterval(timeout);
-      setActive(false);
-    };
-
-    return( 
-        <div className="inline-block relative" onMouseEnter={showTip} onMouseLeave={hideTip}>
-            {props.children}
-            {active && (
-                <div className={`absolute rounded left-1/2 -translate-x-1/2 p-2 text-amber-400 bg-indigo-800 text-xl z-10 whitespace-nowrap mt-2 flex`}>
-                    <div>
-                        <p>{champion.name}</p>
-                        {champion.cost === Cost.Summon ? (
-                            <p>{Cost[champion.cost]}</p>
-                        ): (
-                            <p>{champion.cost} gold</p>
-                        )}
-                    </div>
-                    {champion.traits.length !== 0 && (
-                    <>
-                        <div className=" border-l mx-2"/>
-                        <div>
-                        {champion.traits.map(trait => (
-                            <div className="flex place-items-center pr-4">
-                                <img className="h-4 w-4 mr-1" src={`/src/assets/traits/${trait}.png`}/>
-                                <p>{trait}</p>
-                            </div>
-                            ))}
-                        </div>
-                    </>
-                    )}
-
-                </div>
-            )}
-        </div>
-    )
-}
-
-
-
 export interface Champion {
     name: string
     cost: Cost,
@@ -165,7 +111,7 @@ export enum Cost {
 const costToColorMap: Record<Cost, string> = {
     [Cost.Summon]: "border-amber-600",
     [Cost.One]: "border-gray-400",
-    [Cost.Two]: "border-green-800",
+    [Cost.Two]: "border-green-600",
     [Cost.Three]: "border-blue-500",
     [Cost.Four]: "border-purple-500",
     [Cost.Five]: "border-yellow-400"

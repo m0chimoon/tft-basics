@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Champion, champions, setChampColor } from "../Champions/Champions";
 import { useTraits } from "./TraitsContext";
+import ChampionTooltip from "../Champions/ChampionTooltip";
 
 interface ModalProps {
   show: boolean;
@@ -73,10 +74,12 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
             <p className="text-black text-start">Empty</p>
           </div>
           {filteredChampions.map(champ => (
-            <div className="grid place-items-center cursor-pointer hover:opacity-70" key={champ.name} onClick={() => addChampToHex(champ)}>
-              <img className={`h-12 w-12 border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} />
-              <p className="text-black">{champ.name}</p>
-            </div>
+            <ChampionTooltip champion={champ}>
+              <div className="grid place-items-center cursor-pointer hover:opacity-70" key={champ.name} onClick={() => addChampToHex(champ)}>
+                <img className={`h-12 w-12 border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} />
+                <p className="text-black">{champ.name}</p>
+              </div>
+            </ChampionTooltip>
           ))}
         </div>
       </div>
