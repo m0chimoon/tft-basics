@@ -15,7 +15,7 @@ const TraitsView = () => {
   }));
 
   return (
-    <>
+    <div className="w-72">
       {traits.length > 0 ? (
         activeTraits
           .sort((a, b) => b.count - a.count)
@@ -28,7 +28,7 @@ const TraitsView = () => {
       ) : (
         <p className="text-4xl">Traits</p>
       )}
-    </>
+    </div>
   )
 }
 export default TraitsView
