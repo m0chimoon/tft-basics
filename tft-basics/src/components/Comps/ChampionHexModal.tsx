@@ -74,8 +74,8 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
             <p className="text-black text-start">Empty</p>
           </div>
           {filteredChampions.map(champ => (
-            <ChampionTooltip champion={champ}>
-              <div className="grid place-items-center cursor-pointer hover:opacity-70" key={champ.name} onClick={() => addChampToHex(champ)}>
+            <ChampionTooltip key={champ.name} champion={champ}>
+              <div className="grid place-items-center cursor-pointer hover:opacity-70" onClick={() => addChampToHex(champ)}>
                 <img className={`h-12 w-12 border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} />
                 <p className="text-black">{champ.name}</p>
               </div>
