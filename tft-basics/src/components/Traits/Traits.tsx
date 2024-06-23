@@ -26,7 +26,7 @@ const Traits =  (props: IProps) => {
 }
 export default Traits
 
-const getTraitByName = (name: string): Trait => {
+export const getTraitByName = (name: string): Trait => {
     const trait : Trait | undefined = traits.find(trait => trait.name == name);
     return trait ? trait : traits[0];
 }
@@ -37,7 +37,7 @@ interface Trait {
     steps: TraitActive[]
 }
 
-interface TraitActive {
+export interface TraitActive {
     amount: number
     description: string
 }

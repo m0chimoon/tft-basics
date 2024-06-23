@@ -119,7 +119,7 @@ type ItemName =
   "Titan's Resolve" |
   "Warmog's Armor"
 
-interface Item {
+export interface Item {
   name: ItemName
   description: string
   components: Component[]
@@ -140,7 +140,7 @@ const getComponents = (): Component[] => {
   return components;
 }
 
-const getItemInfo = (): Item[] => {
+export const getItemInfo = (): Item[] => {
   const items: Item[] = [
     {name: "Dryad Emblem", description: "The holder gains the Dryad trait.", components: ["Spatula", "Giant's Belt"] },
     {name: "Fated Emblem", description: "The holder gains the Fated trait.", components: ["Spatula", "Needlessly Large Rod"]},

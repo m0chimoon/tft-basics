@@ -63,7 +63,7 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
       <div className="bg-gray-200 p-8 rounded shadow-md w-[680px] h-[720px]">
         <div className="flex justify-between place-items-center mb-2 mx-5">
-          <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-gray-700 text-white rounded w-4/12" type="text" placeholder="Search.." />
+          <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-gray-700 text-white rounded w-4/12" type="text" id="search" placeholder="Search.." />
           <button onClick={onClose} className="text-black text-xl font-bold text-end">
             &times;
           </button>

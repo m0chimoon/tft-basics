@@ -7,7 +7,7 @@ interface IToolTipProps {
 }
 
 const ChampionTooltip = (props: IToolTipProps) => {
-    let timeout: any;
+    let timeout: number;
     const champion = props.champion;
     const [active, setActive] = useState(false);
     const [position, setPosition] = useState('bottom');
