@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ItemTooltip from "./ItemTooltip"
 
 const Items = () => {
   const components: Component[] = getComponents(); // refers to the Type Component[] that contains all components
@@ -6,17 +7,10 @@ const Items = () => {
 
   // filter items by components
   const [filteredItems, setFilteredItems] = useState(items)
-  const [recipe, setRecipe] = useState<Component[]>([])
   
   const filterItems = (componentName: Component) => {
     const filter = componentName
     setFilteredItems(items.filter((item) => item.components.includes(filter)))
-    setRecipe([])
-  }
-
-  const showRecipe = (itemName: string) => {
-    items.filter((item) => item.name === itemName ? setRecipe(item.components) : "")
-    console.log(recipe)
   }
 
   const resetFilter = (): void => {
@@ -24,36 +18,27 @@ const Items = () => {
   }
     
   return (
-    <div className="flex flex-col">
-      <ul className="flex flex-col">
-        <li className="flex flex-col">
-          <h3 className="text-2xl uppercase text-[#f6b03f] font-semibold mb-7">Components</h3>
-          <div className="flex gap-3 justify-center mb-7">
-            {components.map(component => (
-              <img key={component} onClick={() => filterItems(component)} className="cursor-pointer hover:opacity-70 rounded-lg" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
-            ))}
-          </div>
-        </li>
-        <li className="flex flex-col">
-          <h3 className="text-2xl uppercase text-[#f6b03f] font-semibold mb-7">Items</h3>
-          <p className="w-14 cursor-pointer uppercase text-[#f6b03f] font-semibold" onClick={resetFilter}>All</p>
-          <div className="flex gap-3 flex-wrap justify-center">
-            {filteredItems.map(item => (
-              <div className="flex max-w-[200px]">
-                <img key={item.name} onClick={() => showRecipe(item.name)} className=" h-12 w-12 rounded-lg" src={`/src/assets/items/${item.name.split(" ").join("")}.png`} />
-              </div>
-            ))}
-            {recipe.map((element, index ) => (
-            <img key={index} src={`/src/assets/items/${element.split(" ").join("")}.png`} />
-            ))}
-          </div>
-        </li>
-        <li>
-          {recipe.map((element, index ) => (
-            <img key={index} src={`/src/assets/items/${element.split(" ").join("")}.png`} />
+    <div className="flex flex-col items-center">
+      <div className="flex flex-col mb-6">
+        <h3 className="text-xl uppercase text-[#f6b03f] font-semibold mb-6">Components</h3>
+        <div className="flex gap-3 justify-center">
+          {components.map(component => (
+            <img key={component} onClick={() => filterItems(component)} className="h-14 w-14 cursor-pointer hover:opacity-70 rounded-sm" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
           ))}
-        </li>
-      </ul>
+        </div>
+      </div>
+        
+      <div className="flex flex-col w-[650px]">
+        <h3 className="text-xl uppercase text-[#f6b03f] font-semibold ">Items</h3>
+        <p className="w-14 cursor-pointer uppercase text-[#f6b03f] font-semibold pl-[38px] pb-3 hover:underline" onClick={resetFilter}>All</p>
+        <div className="flex gap-3 flex-wrap justify-center">
+          {filteredItems.map((item, index) => (
+            <ItemTooltip key={index} item ={item}>
+              <img className=" h-14 w-14 rounded-sm" src={`/src/assets/items/${item.name.split(" ").join("")}.png`} />
+            </ItemTooltip>
+          ))}
+        </div>
+      </div>
     </div>
  )
 }
@@ -119,7 +104,7 @@ type ItemName =
   "Titan's Resolve" |
   "Warmog's Armor"
 
-interface Item {
+ export interface Item {
   name: ItemName
   description: string
   components: Component[]
