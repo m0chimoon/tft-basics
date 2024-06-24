@@ -26,14 +26,14 @@ const ItemTooltip = (props: TooltipProps) => {
     <div className="inline-block relative" onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
       {props.children}
       {tooltipActive && (
-        <div className="absolute left-1/2 -translate-x-1/2 bg-[#0d1d2d] z-10 whitespace-nowrap flex flex-col w-[400px] items-center rounded-sm bottom-full mb-2">
-          <p>{item.name}</p>
-          <p className="max-w-[300px] text-wrap text-justify">{item.description}</p>
-          <ul className="flex flex-row">
+        <div className="absolute left-1/2 -translate-x-1/2 bg-[#0d1d2d] z-10 whitespace-nowrap flex flex-col w-[350px] items-center rounded-sm bottom-full mb-3">
+          <p className="text-[#f6b03f] pt-2 text-lg">{item.name}</p>
+          <p className="text-base w-[300px] text-wrap text-center mb-3">{item.description}</p>
+          <ul className="flex flex-col gap-3 mb-3">
             {item.components.map((component, index) => (
-              <li key={index} className="flex flex-col">
-                <img src={`/src/assets/items/${component.split(" ").join("")}.png`} className="w-12 rounded-lg" />
-                <p>{component}</p>
+              <li key={index} className="flex flex-row items-center">
+                <img src={`/src/assets/items/${component.split(" ").join("")}.png`} className="w-11 rounded-sm" />
+                <p className="text-base text-wrap text-center pl-2">{component}</p>
               </li>
             ))}
           </ul>

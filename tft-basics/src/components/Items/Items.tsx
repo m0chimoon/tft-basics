@@ -23,7 +23,7 @@ const Items = () => {
         <h3 className="text-xl uppercase text-[#f6b03f] font-semibold mb-6">Components</h3>
         <div className="flex gap-3 justify-center">
           {components.map(component => (
-            <img key={component} onClick={() => filterItems(component)} className="h-14 w-14 cursor-pointer hover:opacity-70 rounded-sm" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
+            <img key={component} onClick={() => filterItems(component)} className="h-14 w-14 cursor-pointer hover:opacity-80 rounded-sm" src={`/src/assets/items/${component.split(" ").join("")}.png`} />
           ))}
         </div>
       </div>
@@ -34,7 +34,7 @@ const Items = () => {
         <div className="flex gap-3 flex-wrap justify-center">
           {filteredItems.map((item, index) => (
             <ItemTooltip key={index} item ={item}>
-              <img className=" h-14 w-14 rounded-sm" src={`/src/assets/items/${item.name.split(" ").join("")}.png`} />
+              <img className=" h-14 w-14 rounded-sm hover:opacity-80" src={`/src/assets/items/${item.name.split(" ").join("")}.png`} />
             </ItemTooltip>
           ))}
         </div>
