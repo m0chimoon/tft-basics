@@ -9,7 +9,7 @@ const Traits =  (props: IProps) => {
     const trait: Trait = getTraitByName(props.trait);
 
     return (
-        <div className="shadow-lg my-6 bg-gray-600 rounded py-4 text-left px-10">
+        <div className="my-6 rounded py-4 text-left px-10">
             <div className="flex gap-3 place-items-center">
                 <img className="h-8 w-8" src={`/src/assets/traits/${trait.name}.png`}/>
                 <h2 className="text-xl">{trait.name}</h2>
