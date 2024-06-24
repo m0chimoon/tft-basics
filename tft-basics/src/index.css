@@ -38,7 +38,6 @@
   font-family: BeaufortforLOL, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  min-height: 100vh;
   margin: 0;
   text-align: center;
   background-image: url('../src/assets/tftbackground.png');
@@ -66,3 +65,9 @@ body {
   place-items: center;
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
