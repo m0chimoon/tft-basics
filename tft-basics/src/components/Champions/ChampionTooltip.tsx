@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import { setChampColor, Cost, Champion } from "./Champions";
 
-interface IToolTipProps {
+interface Props {
     children: string | JSX.Element | JSX.Element[]
     champion: Champion
 }
 
-const ChampionTooltip = (props: IToolTipProps) => {
+const ChampionTooltip = (props: Props) => {
     let timeout: number;
     const champion = props.champion;
     const [active, setActive] = useState(false);
