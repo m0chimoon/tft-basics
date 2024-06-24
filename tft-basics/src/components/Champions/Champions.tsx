@@ -38,15 +38,14 @@ const Champions = () => {
   return (
     <div>
       <h2 className="text-4xl font-bold uppercase my-5 text-[#f6b03f]">Champions</h2>
-      <div className="flex flex-row justify-center gap-4 m-2 place-items-center">
-        <label>Filters</label>
+      <div className="flex flex-row justify-center gap-4 m-2 place-items-center max-sm:gap-0">
         <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded" type="text" placeholder="Search.." />
         <button onClick={filterByCost} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Cost</button>
         <button onClick={filterAlphabetically} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Name</button>
         <button onClick={resetFilters} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Reset</button>
       </div>
       <div className="flex justify-center">
-        <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2">
+        <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2 max-md:grid-cols-7 max-sm:grid-cols-6 max-[520px]:grid-cols-4">
           {filteredChampions && filteredChampions.map(champ => (
             <ChampionTooltip champion={champ} key={champ.name}>
               <Link to={`/champions/${champ.name}`} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">
