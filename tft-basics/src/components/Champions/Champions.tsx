@@ -48,7 +48,7 @@ const Champions = () => {
                 {filteredChampions && filteredChampions.map(champ => (
                     <ChampionTooltip champion={champ}>
                         <Link to={`/champions/${champ.name}`} key={champ.name} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">
-                            <img className={`h-14 w-14 rounded-full border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
+                            <img className={`h-14 w-14 rounded-sm border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} alt={champ.name} />
                             <p>{champ.name}</p>
                         </Link>
                     </ChampionTooltip>
@@ -100,7 +100,6 @@ export type TraitName =
 
 
 export enum Cost {
-    Summon = 0,
     One = 1,
     Two = 2,
     Three = 3,
@@ -109,7 +108,6 @@ export enum Cost {
 }
 
 const costToColorMap: Record<Cost, string> = {
-    [Cost.Summon]: "border-amber-600",
     [Cost.One]: "border-gray-400",
     [Cost.Two]: "border-green-600",
     [Cost.Three]: "border-blue-500",
@@ -155,7 +153,6 @@ export const champions: Champion[] = [
     {name: "Janna", cost: Cost.Two, traits: ["Dragonlord", "Invoker"], ability: {name: "Heavenly Winds", description: "Grant Shield to Janna and the lowest Health ally for 4 seconds. Then, deal magic damage to the 2 nearest enemies."}},
     {name: "Jax", cost: Cost.One, traits: ["Inkshadow", "Warden"], ability: {name: "Counter Strike", description: "Gain 60 Armor and Magic Resist for the next 2 seconds. Afterwards, deal magic damage to adjacent enemies. The current target takes magic damage and is Stunned for 1.5 seconds."}},
     {name: "Kaisa", cost: Cost.Four, traits: ["Inkshadow", "Trickshot"], ability: {name: "Inkstorm", description: "Fire 20 waves at the current target over 2 seconds, each dealing % AD + % AP physical damage to the first enemy hit. If an enemy is hit by 10 waves, they take % AD + % AP physical damage per wave instead."}},
-    {name: "Kayle", cost: Cost.Summon, traits: [], ability: {name: "Celestial Flames", description: "Active: Fire a wave at the current target that deals magic damage to all enemies hit."}},
     {name: "Kayn", cost: Cost.Four, traits: ["Ghostly", "Reaper"], ability: {name: "Shadow Assassin", description: "On first cast, transform, dealing physical damage to nearby enemies. While transformed, gain 30% Critical Strike Chance and critical attacks damage adjacent enemies. If the spin only hits one enemy, the damage is increased by 50%."}},
     {name: "Khazix", cost: Cost.One, traits: ["Heavenly", "Reaper"], ability: {name: "Leap!", description: "Leap towards the lowest Health enemy within 3 hexes and deal % AD + % AP physical damage."}},
     {name: "Kindred", cost: Cost.Two, traits: ["Dryad", "Fated", "Reaper"], ability: {name: "Flourish of Arrows", description: "Dash away from the current target and deal magic damage to them and magic damage to the nearest enemy."}},
