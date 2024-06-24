@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Item } from "./Items"
+import { Item } from "./ItemData";
 
 interface TooltipProps {
   children: JSX.Element | JSX.Element[]

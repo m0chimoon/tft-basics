@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { Champion, Cost, getSet11Champions } from '../Champions/Champions';
 import Traits from '../Traits/Traits';
+import { setChampColor } from '../shared/ChampionColor';
+import { Champion, getSet11Champions } from '../Champions/ChampionData';
 
 const ChampionView = () => {
     const { name } = useParams();
@@ -35,16 +36,3 @@ const ChampionView = () => {
     )
 }
 export default ChampionView
-
-const costToColorMap: Record<Cost, string> = {
-    [Cost.Summon]: "border-amber-600",
-    [Cost.One]: "border-gray-400",
-    [Cost.Two]: "border-green-600",
-    [Cost.Three]: "border-blue-500",
-    [Cost.Four]: "border-purple-500",
-    [Cost.Five]: "border-yellow-400"
-};
-    
-const setChampColor = (cost: Cost): string => {
-    return costToColorMap[cost];
-};

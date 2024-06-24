@@ -17,7 +17,7 @@ const Header = () => {
          <Link to='/set'>set</Link>
         </li>
         <li className='hover:underline'>
-          <Link to='/comps'>comps</Link>
+          <Link to='/comps'>planner</Link>
         </li>
         <li className='hover:underline'>
           <Link to='/augments'>augments</Link>

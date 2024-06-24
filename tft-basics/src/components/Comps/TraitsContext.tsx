@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useState } from "react";
-import { TraitName } from "../Champions/Champions";
 import React from "react";
+import { TraitName } from "../Traits/TraitData";
 
 
 export const TraitsContext = createContext<TraitContextProps | undefined>(undefined);

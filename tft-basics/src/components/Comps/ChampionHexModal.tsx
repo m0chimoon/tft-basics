@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Champion, champions, setChampColor } from "../Champions/Champions";
+import { Champion, champions } from "../Champions/ChampionData";
 import { useTraits } from "./TraitsContext";
 import ChampionTooltip from "../Champions/ChampionTooltip";
+import { setChampColor } from "../shared/ChampionColor";
 
 interface ModalProps {
   show: boolean;

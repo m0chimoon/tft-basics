@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Champion, Cost} from "../Champions/Champions";
 import ChampionHexModal from "./ChampionHexModal";
 import ChampionTooltip from "../Champions/ChampionTooltip";
+import { Champion } from "../Champions/ChampionData";
+import { setChampBackgroundColor } from "../shared/ChampionColor";
 
 const ChampionHex = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,15 +32,3 @@ const ChampionHex = () => {
   )
 }
 export default ChampionHex
-
-const costToColorMap: Record<Cost, string> = {
-  [Cost.One]: "bg-gray-400",
-  [Cost.Two]: "bg-green-600",
-  [Cost.Three]: "bg-blue-500",
-  [Cost.Four]: "bg-purple-500",
-  [Cost.Five]: "bg-yellow-400"
-};
-  
-const setChampBackgroundColor = (cost: Cost): string => {
-  return costToColorMap[cost];
-};

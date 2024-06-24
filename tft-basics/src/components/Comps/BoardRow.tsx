@@ -1,6 +1,5 @@
 import ChampionHex from "./ChampionHex";
 
-
 interface BoardRow {
   class?: string
 }

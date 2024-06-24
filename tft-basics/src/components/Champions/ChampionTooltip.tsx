@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { setChampColor, Champion } from "./Champions";
-
+import { Champion } from "./ChampionData";
+import { setChampColor } from "../shared/ChampionColor";
 
 interface ToolTipProps {
   children: string | JSX.Element | JSX.Element[]
