@@ -16,20 +16,20 @@ const TraitsView = () => {
   }));
 
   return (
-    <div className="w-72">
+    <div className="w-72 text-4xl max-md:w-52 max-md:text-xl">
       {traits.length > 0 ? (
         activeTraits
           .sort((a, b) => b.count - a.count)
           .map((trait, index) => (
             <TraitsToolTip traitName={trait.traitName}>
               <div className="flex place-items-center gap-2">
-                <img className="h-8 w-8" src={`/src/assets/traits/${trait.traitName}.png`}/>
-                <p className="text-4xl" key={index}>{trait.traitName}: {trait.count}</p>
+                <img className="h-8 w-8 max-md:h-6 max-md:w-6" src={`/src/assets/traits/${trait.traitName}.png`}/>
+                <p key={index}>{trait.traitName}: {trait.count}</p>
             </div>
             </TraitsToolTip>
           ))
       ) : (
-        <p className="text-4xl">No active traits</p>
+        <p>No active traits</p>
       )}
     </div>
   )

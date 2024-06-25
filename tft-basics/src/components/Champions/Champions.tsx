@@ -38,7 +38,7 @@ const Champions = () => {
   return (
     <div>
       <h2 className="text-4xl font-bold uppercase my-5 text-[#f6b03f]">Champions</h2>
-      <div className="flex flex-row justify-center gap-4 m-2 place-items-center max-sm:gap-0">
+      <div className="flex flex-row justify-center gap-4 m-2 place-items-center max-sm:gap-1">
         <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded" type="text" placeholder="Search.." />
         <button onClick={filterByCost} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Cost</button>
         <button onClick={filterAlphabetically} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Name</button>
