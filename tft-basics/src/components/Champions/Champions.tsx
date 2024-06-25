@@ -37,15 +37,15 @@ const Champions = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold uppercase my-5 text-[#f6b03f]">Champions</h2>
-      <div className="flex flex-row justify-center gap-4 m-2 place-items-center max-sm:gap-1">
-        <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded" type="text" placeholder="Search.." />
-        <button onClick={filterByCost} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Cost</button>
-        <button onClick={filterAlphabetically} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Name</button>
-        <button onClick={resetFilters} className="px-2 py-1 bg-[#f6b03f] rounded-lg text-black">Reset</button>
+      <h2 className="text-2xl font-semibold uppercase text-[#f6b03f] mb-8">Champions</h2>
+      <div className="flex flex-row justify-center gap-4 mb-8 place-items-center max-sm:gap-1">
+        <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-[3px] bg-white text-black rounded-sm" type="text" placeholder="Search.." />
+        <button onClick={filterByCost} className="px-2 py-1 bg-[#0d1d2d] rounded-sm text-[#f6b03f] uppercase font-normal text-sm">Cost</button>
+        <button onClick={filterAlphabetically} className="px-2 py-1 bg-[#0d1d2d] rounded-sm text-[#f6b03f] uppercase font-normal text-sm">Name</button>
+        <button onClick={resetFilters} className="px-2 py-1 bg-[#0d1d2d] rounded-sm text-[#f6b03f] uppercase font-normal text-sm">Reset</button>
       </div>
       <div className="flex justify-center">
-        <div className="grid grid-cols-8 grid-rows-8 place-items-center gap-y-2 gap-x-2 max-md:grid-cols-7 max-sm:grid-cols-6 max-[520px]:grid-cols-4">
+        <div className="grid grid-cols-10 grid-rows-6 place-items-center gap-y-2 gap-x-2 max-md:grid-cols-7 max-sm:grid-cols-6 max-[520px]:grid-cols-4">
           {filteredChampions && filteredChampions.map(champ => (
             <ChampionTooltip champion={champ} key={champ.name}>
               <Link to={`/champions/${champ.name}`} className="grid place-items-center cursor-pointer hover:opacity-70 h-20 w-20">

@@ -24,12 +24,12 @@ const TraitsView = () => {
             <TraitsToolTip traitName={trait.traitName}>
               <div className="flex place-items-center gap-2">
                 <img className="h-8 w-8 max-md:h-6 max-md:w-6" src={`/src/assets/traits/${trait.traitName}.png`}/>
-                <p key={index}>{trait.traitName}: {trait.count}</p>
+                <p className="uppercase text-[#f6b03f] text-2xl font-semibold" key={index}>{trait.traitName}: {trait.count}</p>
             </div>
             </TraitsToolTip>
           ))
       ) : (
-        <p>No active traits</p>
+        <p className="uppercase text-[#f6b03f] text-2xl font-semibold">No active traits</p>
       )}
     </div>
   )

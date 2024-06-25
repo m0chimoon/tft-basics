@@ -14,11 +14,11 @@ const Header = () => {
   };
 
   return (
-    <header className='flex justify-center items-center mb-12 py-1 uppercase text-lg font-semibold text-[#f6b03f]'>
+    <header className='flex justify-center items-center mb-14 py-1 uppercase text-lg font-semibold text-[#f6b03f]'>
        <Link to='/'>
-        <img className='max-w-[96px] max-h-[96px] mr-1.5' src={tfttextlogo}/>
+        <img className='max-w-[96px] max-h-[96px] mx-4' src={tfttextlogo}/>
        </Link>
-      <img className='max-w-[96px] max-h-[96px]' src={tftlogo}/>
+      <img className='max-w-[96px] max-h-[96px] py-2' src={tftlogo}/>
 
       <button className="uppercase md:hidden" onClick={handleOpenMenu}>menu</button>
       <Menu onClose={handleCloseMenu} show={showMenu}/>

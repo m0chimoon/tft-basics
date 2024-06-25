@@ -62,23 +62,23 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-gray-200 p-8 rounded shadow-md w-[680px] h-[720px]">
+      <div className="bg-[#0d1d2d] p-8 rounded-sm shadow-lg w-[680px] h-[720px]">
         <div className="flex justify-between place-items-center mb-2 mx-5">
-          <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-gray-700 text-white rounded w-4/12" type="text" id="search" placeholder="Search.." />
+          <input value={filter} onInput={(value) => setFilter(value.currentTarget.value.toLocaleLowerCase())} className="px-2 py-0.5 bg-white text-black rounded-sm w-4/12" type="text" id="search" placeholder="Search.." />
           <button onClick={onClose} className="text-black text-xl font-bold text-end">
             &times;
           </button>
         </div>
         <div className="grid grid-cols-8 grid-rows-8 place-items-center">
           <div onClick={removeChampFromHex} className="text-black grid place-items-center cursor-pointer hover:opacity-70">
-            <div className="hexagon w-12 bg-gray-600"></div>
-            <p className="text-black text-start">Empty</p>
+            <div className="hexagon w-[44px] bg-gray-600"></div>
+            <p className="text-white text-start">Empty</p>
           </div>
           {filteredChampions.map(champ => (
             <ChampionTooltip key={champ.name} champion={champ}>
               <div className="grid place-items-center cursor-pointer hover:opacity-70" onClick={() => addChampToHex(champ)}>
                 <img className={`h-12 w-12 border-2 ${setChampColor(champ.cost)}`} src={`/src/assets/champions/${champ.name}.png`} />
-                <p className="text-black">{champ.name}</p>
+                <p className="text-white">{champ.name}</p>
               </div>
             </ChampionTooltip>
           ))}
