@@ -29,7 +29,7 @@ const Items = () => {
         </div>
       </div>
         
-      <div className="flex flex-col w-[650px]">
+      <div className="flex flex-col w-[650px] min-h-[516px]">
         <h3 className="text-2xl uppercase text-[#f6b03f] font-semibold self-start pl-6 mb-6">Items</h3>
         <p className="w-14 cursor-pointer uppercase text-[#f6b03f] font-semibold pb-2 hover:underline ml-[-50px] mb-[-60px]" onClick={resetFilter}>Show All</p>
         <div className="flex gap-3 flex-wrap justify-center">
