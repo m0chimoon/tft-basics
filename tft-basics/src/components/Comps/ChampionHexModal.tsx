@@ -12,10 +12,6 @@ interface ModalProps {
 }
 
 const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) => {
-  if (!show) {
-    return null;
-  }
-
   const [filteredChampions, setFilteredChampions] = useState<Champion[]>(champions);
   const [filter, setFilter] = useState<string>("");
   const { traits, setTraits, champNames, setChampNames } = useTraits();
@@ -59,6 +55,9 @@ const ChampionHexModal = ({ show, onClose, setChampion, champion }: ModalProps) 
     setFilteredChampions(champions.filter((champ) => champ.name.toLocaleLowerCase().includes(filter)))
   },[filter])
 
+  if (!show) {
+    return null;
+  }
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
